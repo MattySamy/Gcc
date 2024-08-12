@@ -64,6 +64,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // Check if user already logged in or not
   if (req.cookies.jwt) {
+    res.clearCookie("jwt", { httpOnly: false, secure: true });
     return next(new ApiError("You are already logged in", 401));
   }
 
@@ -103,6 +104,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // 6) send response to client side
   res.status(201).json({
+    status: "success",
     "Welcome Message": `Welcome back, ${user.username}`,
     "JWT Token": token,
     "Your Data": user,
@@ -221,6 +223,7 @@ exports.refresh = asyncHandler(async (req, res, next) => {
           );
 
           return res.status(200).json({
+            status: "success",
             "New Access Token": accessToken,
           });
         }
@@ -426,7 +429,7 @@ exports.logout = asyncHandler(async (req, res, next) => {
   });
 
   res.status(201).json({
-    status: "You have been logged out successfully :)",
+    status: "success",
     "New Expired JWT Token": req.token,
   });
 });

@@ -13,7 +13,10 @@ exports.deleteOne = (Model) =>
     }
 
     // Trigger "remove" event launched by mongoose middleware
-    res.status(204).json({ msg: `${Model.modelName} deleted successfully` });
+    res.status(200).json({
+      status: "success",
+      msg: `${Model.modelName} deleted successfully`,
+    });
   });
 
 // eslint-disable-next-line default-param-last
@@ -35,7 +38,7 @@ exports.updateOne = (Model, imageFieldName = "", saveDirName = "") =>
     // Trigger for "save" event
     // model.save();
 
-    res.status(200).json({ data: model });
+    res.status(200).json({ status: "success", data: model });
   });
 
 exports.createOne = (Model) =>
@@ -65,7 +68,7 @@ exports.getOne = (Model, populateOptions = null) =>
       );
     }
     // res stops the middleware chain
-    res.status(200).json({ data: model });
+    res.status(200).json({ status: "success", data: model });
   });
 
 exports.getAll = (Model) =>
@@ -81,6 +84,7 @@ exports.getAll = (Model) =>
     const { mongooseQuery, paginationResult } = apiPagination;
     const Docs = await mongooseQuery;
     res.status(200).json({
+      status: "success",
       results: Docs.length,
       pagination: paginationResult,
       data: Docs,

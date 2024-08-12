@@ -6,6 +6,8 @@ const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     role: {
       type: String,
       enum: ["user", "admin"],
@@ -14,6 +16,10 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
+    },
+    phone: {
+      type: String,
+      required: [true, "Phone number is required"],
     },
     passwordChangedAt: {
       type: Date,
