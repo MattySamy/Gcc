@@ -425,7 +425,7 @@ exports.logout = asyncHandler(async (req, res, next) => {
     secure: true,
   });
 
-  req.cookies.res.status(201).json({
+  res.status(201).json({
     status: "You have been logged out successfully :)",
     "New Expired JWT Token": req.token,
   });
