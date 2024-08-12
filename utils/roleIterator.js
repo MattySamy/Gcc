@@ -12,22 +12,6 @@ class RoleIterator {
     }
     return ParentPermissions;
   }
-
-  getPermissions() {
-    const Permissions = [];
-    for (
-      let i = 0;
-      i <
-      this.role.parentPermissions[this.parentPermissionsIndex].permissions
-        .length;
-      i++
-    ) {
-      Permissions.push(
-        this.role.parentPermissions[this.parentPermissionsIndex].permissions[i]
-      );
-    }
-    return Permissions;
-  }
 }
 
 module.exports = RoleIterator;

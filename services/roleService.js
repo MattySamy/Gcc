@@ -37,6 +37,8 @@ exports.updateRole = factory.updateOne(Role);
 
 exports.deleteRole = factory.deleteOne(Role);
 
+// Parent Permissions
+
 // @desc Get parent permissions
 // @route GET /api/v1/roles/:id/level2
 // @access Private/Admin
@@ -50,20 +52,21 @@ exports.getParentPermissions = asyncHandler(async (req, res, next) => {
 
   const iterator = new RoleIterator(role);
   const parentPermissions = iterator.getParentPermissions();
-  res.status(200).json({ data: parentPermissions });
+  res.status(200).json({ status: "success", data: parentPermissions });
 });
 
-// @desc Get permissions
-// @route GET /api/v1/roles/:id/level2/:parentPermissionId/level3
+// @desc Get single parent permission
+// @route GET /api/v1/roles/:id/level2/:parentPermissionId
 // @access Private/Admin
 
-exports.getPermissions = asyncHandler(async (req, res, next) => {
+exports.getParentPermission = asyncHandler(async (req, res, next) => {
   const role = await Role.findById(req.params.id);
+
   if (!role) {
     return next(new ApiError(`Role not found for id: ${req.params.id}`, 404));
   }
 
-  const parentPermission = await role.parentPermissions.id(
+  const parentPermission = role.parentPermissions.id(
     req.params.parentPermissionId
   );
 
@@ -75,11 +78,7 @@ exports.getPermissions = asyncHandler(async (req, res, next) => {
       )
     );
   }
-
-  const iterator = new RoleIterator(role);
-  const permissions = iterator.getPermissions();
-
-  res.status(200).json({ data: permissions });
+  res.status(200).json({ status: "success", data: parentPermission });
 });
 
 // @desc Create parentpermissions
@@ -98,6 +97,7 @@ exports.createParentPermissions = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     msg: "ParentPermission created successfully",
+    status: "success",
     data: role.parentPermissions,
   });
 });
@@ -130,6 +130,7 @@ exports.updateParentPermission = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     msg: "ParentPermission updated successfully",
+    status: "success",
     data: parentPermission,
   });
 });
@@ -162,10 +163,75 @@ exports.deleteParentPermission = asyncHandler(async (req, res, next) => {
 
   await role.save();
 
-  res.status(204).json({ data: parentPermission });
+  res.status(200).json({ status: "success", data: parentPermission });
 });
 
 // Permissions
+
+// @desc Get permissions
+// @route GET /api/v1/roles/:id/level2/:parentPermissionId/level3
+// @access Private/Admin
+
+exports.getPermissions = asyncHandler(async (req, res, next) => {
+  const role = await Role.findById(req.params.id);
+  if (!role) {
+    return next(new ApiError(`Role not found for id: ${req.params.id}`, 404));
+  }
+
+  const parentPermission = await role.parentPermissions.id(
+    req.params.parentPermissionId
+  );
+
+  if (!parentPermission) {
+    return next(
+      new ApiError(
+        `ParentPermission not found for id: ${req.params.parentPermissionId}`,
+        404
+      )
+    );
+  }
+
+  const permissions = parentPermission.permissions;
+
+  res.status(200).json({ status: "success", data: permissions });
+});
+
+// @desc Get single permission
+// @route GET /api/v1/roles/:id/level2/:parentPermissionId/level3/:permissionId
+// @access Private/Admin
+
+exports.getPermission = asyncHandler(async (req, res, next) => {
+  const role = await Role.findById(req.params.id);
+  if (!role) {
+    return next(new ApiError(`Role not found for id: ${req.params.id}`, 404));
+  }
+
+  const parentPermission = await role.parentPermissions.id(
+    req.params.parentPermissionId
+  );
+
+  if (!parentPermission) {
+    return next(
+      new ApiError(
+        `ParentPermission not found for id: ${req.params.parentPermissionId}`,
+        404
+      )
+    );
+  }
+
+  const permission = parentPermission.permissions.id(req.params.permissionId);
+
+  if (!permission) {
+    return next(
+      new ApiError(
+        `Permission not found for id: ${req.params.permissionId}`,
+        404
+      )
+    );
+  }
+
+  res.status(200).json({ status: "success", data: permission });
+});
 
 // @desc Create Permissions
 // @route POST /api/v1/roles/:id/level2/:parentPermissionId/level3
@@ -198,6 +264,7 @@ exports.createPermissions = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     msg: "Permission created successfully",
+    status: "success",
     data: role.parentPermissions,
   });
 });
@@ -241,9 +308,11 @@ exports.updatePermission = asyncHandler(async (req, res, next) => {
   await parentPermission.save();
   await role.save();
 
-  res
-    .status(200)
-    .json({ msg: "Permission updated successfully", data: parentPermission });
+  res.status(200).json({
+    msg: "Permission updated successfully",
+    status: "success",
+    data: parentPermission,
+  });
 });
 
 // @desc Delete Permissions
@@ -268,9 +337,7 @@ exports.deletePermission = asyncHandler(async (req, res, next) => {
     );
   }
 
-  const permission = await parentPermission.permissions.id(
-    req.params.permissionId
-  );
+  const permission = parentPermission.permissions.id(req.params.permissionId);
   if (!permission) {
     return next(
       new ApiError(
@@ -280,10 +347,10 @@ exports.deletePermission = asyncHandler(async (req, res, next) => {
     );
   }
 
-  const deletedPermission = await permission.deleteOne();
+  await permission.deleteOne();
 
   await parentPermission.save();
   await role.save();
 
-  res.status(204).json({ data: permission });
+  res.status(200).json({ status: "success", data: permission });
 });

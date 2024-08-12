@@ -9,6 +9,7 @@ const { ApiError } = require("./utils/errorHandler");
 const { globalErrorHandler } = require("./middlewares/error.middleware");
 
 const { mongoConnect } = require("./config/mongoConnection");
+const { createAdmin } = require("./config/automaticAdminCreation");
 
 const authRoute = require("./routes/auth.route");
 const userRoute = require("./routes/user.route");
@@ -52,6 +53,7 @@ app.all("*", (req, res, next) => {
 app.use(globalErrorHandler);
 
 async function startServer() {
+  createAdmin();
   await mongoConnect()
     .then((conn) =>
       console.log(

@@ -13,7 +13,6 @@ exports.deleteOne = (Model) =>
     }
 
     // Trigger "remove" event launched by mongoose middleware
-    // model.remove();
     res.status(204).json({ msg: `${Model.modelName} deleted successfully` });
   });
 

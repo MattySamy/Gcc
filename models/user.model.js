@@ -11,12 +11,6 @@ const userSchema = new mongoose.Schema(
       enum: ["user", "admin"],
       default: "user",
     },
-    wishList: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Product", default: [] },
-    ],
-    products: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Product", default: [] },
-    ],
     password: {
       type: String,
       required: [true, "Password is required"],

@@ -1,5 +1,5 @@
 const express = require("express");
-// const categoryValidator = require("../utils/validators/category.validator");
+const roleValidator = require("../utils/validators/role.validator");
 const {
   getRoles,
   getRole,
@@ -7,10 +7,12 @@ const {
   updateRole,
   deleteRole,
   getParentPermissions,
+  getParentPermission,
   createParentPermissions,
   updateParentPermission,
   deleteParentPermission,
   getPermissions,
+  getPermission,
   createPermissions,
   updatePermission,
   deletePermission,
@@ -26,32 +28,47 @@ router.use(AuthorizedService.authProtect, AuthorizedService.allowedTo("admin"));
 
 // Roles Routes
 
-router.route("/").post(createRole).get(getRoles);
+router
+  .route("/")
+  .post(...roleValidator.createRoleValidator, createRole)
+  .get(getRoles);
 
-router.route("/:id").get(getRole).put(updateRole).delete(deleteRole);
+router
+  .route("/:id")
+  .get(...roleValidator.getRoleValidator, getRole)
+  .put(...roleValidator.updateRoleValidator, updateRole)
+  .delete(...roleValidator.deleteRoleValidator, deleteRole);
 
 // Parent Permissions Routes
 
 router
   .route("/:id/level2")
-  .get(getParentPermissions)
-  .post(createParentPermissions);
+  .get(...roleValidator.getParentPermissionsValidator, getParentPermissions)
+  .post(
+    ...roleValidator.createParentPermissionValidator,
+    createParentPermissions
+  );
 
 router
   .route("/:id/level2/:parentPermissionId")
-  .put(updateParentPermission)
-  .delete(deleteParentPermission);
+  .get(...roleValidator.getParentPermissionValidator, getParentPermission)
+  .put(...roleValidator.updateParentPermissionValidator, updateParentPermission)
+  .delete(
+    ...roleValidator.deleteParentPermissionValidator,
+    deleteParentPermission
+  );
 
-// Sub SubCategories Routes
+// Permissions Routes
 
 router
   .route("/:id/level2/:parentPermissionId/level3")
-  .get(getPermissions)
-  .post(createPermissions);
+  .get(...roleValidator.getPermissionsValidator, getPermissions)
+  .post(...roleValidator.createPermissionValidator, createPermissions);
 
 router
   .route("/:id/level2/:parentPermissionId/level3/:permissionId")
-  .put(updatePermission)
-  .delete(deletePermission);
+  .get(...roleValidator.getPermissionValidator, getPermission)
+  .put(...roleValidator.updatePermissionValidator, updatePermission)
+  .delete(...roleValidator.deletePermissionValidator, deletePermission);
 
 module.exports = { router };
