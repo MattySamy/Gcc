@@ -10,6 +10,7 @@ exports.createAdmin = async () => {
       username: "admin",
       email: "admin@gmail.com",
       password: "admin",
+      verified: true,
       role: "admin",
     })
       .then(() => console.log("Admin created successfully by default !!"))
