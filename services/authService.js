@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/no-extraneous-dependencies */
 const crypto = require("crypto");
-
+const Token = require("../models/token.model");
 const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -17,65 +17,38 @@ const sendEmail = require("../utils/sendEmail");
 
 exports.signUp = (...roles) =>
   asyncHandler(async (req, res, next) => {
-    // Check if admin exists and create one if not
-    const adminExists = await UserModel.findOne({ role: "admin" });
-    if (!adminExists) {
-      await UserModel.create({
-        username: "admin",
-        email: "admin@gmail.com",
-        password: "admin",
-        role: "admin",
-      }).then(() => console.log("Admin created successfully by default !!"));
-    }
-
     // 1) Create user
     let user = UserModel.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
     });
+    user = await user;
 
-    if (!roles.includes(user.role) || roles.length === 0) {
-      user = await user;
+    let EmailToken = await new Token({
+      userId: user._id,
+      token: crypto.randomBytes(32).toString("hex"),
+    }).save();
 
-      // 2) Generate token => jwt.sign(payload,secretKey,options:{expiresIn})
-      const token = generateToken(user._id);
+    const message = `Please click here to verify your account https://gcc-eosin.vercel.app/api/v1/auth/verify/${
+      (await user)._id
+    }/${EmailToken.token}`;
 
-      // 3) Creating refresh token not that expiry of refresh
-      // token is greater than the access token
-
-      const refreshToken = jwt.sign(
-        {
-          userId: user._id,
-        },
-        process.env.JWT_REFRESH_SECRET_KEY,
-        { expiresIn: process.env.JWT_REFRESH_EXPIRES_IN }
-      );
-
-      // 4) Assigning refresh token in http-only cookie
-      res.cookie("jwt", refreshToken, {
-        httpOnly: true,
-        sameSite: "None",
-        secure: true,
-        maxAge: 24 * 60 * 60 * 1000,
+    try {
+      await sendEmail({
+        email: (await user).email,
+        subject: "Email Verification",
+        message,
       });
-
-      // 5) Send response
-      res.status(201).json({
-        status: "success",
-        token,
-        data: {
-          user,
-        },
-      });
-    } else {
-      return next(
-        new ApiError(
-          "You do not have permission to perform this action !!",
-          403
-        )
-      );
+    } catch (err) {
+      console.log(err);
     }
+
+    // 5) Send response
+    res.status(200).json({
+      status: "success",
+      msg: "An email sent to your email address to verify your account",
+    });
   });
 
 // @desc Log In
@@ -95,6 +68,9 @@ exports.login = asyncHandler(async (req, res, next) => {
         401
       )
     );
+  }
+  if (!user.verified) {
+    return next(new ApiError("Please verify your account first :'(", 401));
   }
   // 3) generate token
   const token = generateToken(user._id);
@@ -328,6 +304,29 @@ exports.verifyPasswordResetCode = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     msg: "Reset Code has been verified successfully :)",
+  });
+});
+
+// @desc Verify Email Verification Code
+// @route GET /api/v1/auth/verify/:id/:token
+// @access Private
+
+exports.verifyEmail = asyncHandler(async (req, res) => {
+  const user = await UserModel.findOne({ _id: req.params.id });
+  if (!user) return res.status(400).send("Invalid link");
+
+  const token = await Token.findOne({
+    userId: user._id,
+    token: req.params.token,
+  });
+  if (!token) return res.status(400).send("Invalid link");
+
+  await UserModel.updateOne({ _id: user._id, verified: true });
+  await Token.findByIdAndDelete(token._id);
+
+  res.status(200).json({
+    status: "success",
+    msg: "Email has been verified successfully :)",
   });
 });
 

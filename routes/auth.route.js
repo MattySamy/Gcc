@@ -9,6 +9,7 @@ const {
   resetPassword,
   authProtect,
   logout,
+  verifyEmail,
 } = require("../services/authService");
 
 const {
@@ -31,4 +32,6 @@ router.route("/verifyPasswordResetCode").post(verifyPasswordResetCode);
 router.route("/resetPassword").put(resetPassword);
 
 router.route("/logout").get(authProtect, logout);
+
+router.route("/verify/:id/:token").get(verifyEmail);
 module.exports = { router };
