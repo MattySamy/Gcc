@@ -321,7 +321,13 @@ exports.verifyEmail = asyncHandler(async (req, res) => {
   });
   if (!token) return res.status(400).send("Invalid link");
 
-  await UserModel.updateOne({ _id: user._id, verified: true });
+  await UserModel.findByIdAndUpdate(
+    user._id,
+    { verified: true },
+    {
+      new: true,
+    }
+  );
   await Token.findByIdAndDelete(token._id);
 
   res.status(200).json({
