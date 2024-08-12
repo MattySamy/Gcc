@@ -416,12 +416,18 @@ exports.logout = asyncHandler(async (req, res, next) => {
   }
 
   // Destroy refresh token cookie
-  res.cookie("jwt", "LoggedOut", {
+  // res.cookie("jwt", "LoggedOut", {
+  //   httpOnly: true,
+  //   expires: new Date(Date.now() + 1 * 1000),
+  // });
+
+  res.clearCookie("jwt", {
     httpOnly: true,
-    expires: new Date(Date.now() + 1 * 1000),
+    sameSite: "none",
+    secure: true,
   });
 
-  res.status(201).json({
+  req.cookies.res.status(201).json({
     status: "You have been logged out successfully :)",
     "New Expired JWT Token": req.token,
   });
