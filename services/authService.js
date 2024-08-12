@@ -96,8 +96,7 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   // 5) Assigning refresh token in http-only cookie
   res.cookie("jwt", refreshToken, {
-    httpOnly: true,
-    sameSite: "None",
+    httpOnly: false,
     secure: true,
     maxAge: 24 * 60 * 60 * 1000,
   });
@@ -422,8 +421,7 @@ exports.logout = asyncHandler(async (req, res, next) => {
   // });
 
   res.clearCookie("jwt", {
-    httpOnly: true,
-    sameSite: "none",
+    httpOnly: false,
     secure: true,
   });
 
