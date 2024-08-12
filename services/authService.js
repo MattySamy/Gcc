@@ -61,6 +61,12 @@ exports.login = asyncHandler(async (req, res, next) => {
   const user = await UserModel.findOne({
     $or: [{ username: req.body.username }, { email: req.body.username }],
   });
+
+  // Check if user already logged in or not
+  if (req.cookies.jwt) {
+    return next(new ApiError("You are already logged in", 401));
+  }
+
   if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
     return next(
       new ApiError(
@@ -69,6 +75,8 @@ exports.login = asyncHandler(async (req, res, next) => {
       )
     );
   }
+
+  // Check if user is verified
   if (!user.verified) {
     return next(new ApiError("Please verify your account first :'(", 401));
   }
