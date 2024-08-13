@@ -49,7 +49,156 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "629"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 20:54:46 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"275-mVBGC+ct9FlSeR5Y3VhLlsMRbe8\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::hgzbt-1723496086361-5ed83496b08a"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"results\": 2,\n    \"pagination\": {\n        \"currentPage\": 1,\n        \"limit\": 5,\n        \"numberOfPages\": 1\n    },\n    \"data\": [\n        {\n            \"_id\": \"66b4de972eb89d3df82e7f0e\",\n            \"name\": \"Admin\",\n            \"parentPermissions\": [\n                {\n                    \"name\": \"القراءة\",\n                    \"_id\": \"66b4de972eb89d3df82e7f0f\",\n                    \"permissions\": []\n                },\n                {\n                    \"name\": \"كتابة\",\n                    \"_id\": \"66b4de972eb89d3df82e7f10\",\n                    \"permissions\": []\n                }\n            ],\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"66b9faf042a706a571a25db9\",\n            \"name\": \"Admin\",\n            \"parentPermissions\": [\n                {\n                    \"name\": \"القراءة\",\n                    \"permissions\": [\n                        {\n                            \"name\": \"الجديدة القراءة\",\n                            \"_id\": \"66b9faf042a706a571a25dbb\"\n                        }\n                    ],\n                    \"_id\": \"66b9faf042a706a571a25dba\"\n                },\n                {\n                    \"name\": \"كتابة\",\n                    \"_id\": \"66b9faf042a706a571a25dbc\",\n                    \"permissions\": []\n                }\n            ],\n            \"__v\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:21:10 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"68-OGcfEGj4+G6dckF6v6G41Bl0Gw8\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::9prbh-1723501269929-e3528bd59593"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"You're not allowed to access this route, Your Role is: user !!\"\n}"
+						}
+					]
 				},
 				{
 					"name": "create role",
@@ -74,7 +223,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Admin\",\r\n  \"parentPermissions\": [\r\n    {\r\n      \"name\": \"القراءة\",\r\n      \"permissions\":{\r\n        \"name\":\"الجديدة القراءة\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"كتابة\"\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n    \"name\":\"الجديدة القراءة\",\r\n  \"parentPermissions\": [\r\n    {\r\n      \"name\": \"القراءة\",\r\n      \"permissions\":{\r\n        \"name\":\"الجديدة القراءة\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"كتابة\"\r\n    }\r\n  ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -93,7 +242,248 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njk5NDYwZTY0MWEwZjk2M2M3M2E3ODEiLCJpYXQiOjE3MjEzMjEyNDgsImV4cCI6MTcyMTMyMTMzOH0.Z2dFs976coFmfx1s05V22aN9UBooXmzLwj8rpx_51Gc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Admin\",\r\n  \"parentPermissions\": [\r\n    {\r\n      \"name\": \"القراءة\",\r\n      \"permissions\":{\r\n        \"name\":\"الجديدة القراءة\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"كتابة\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "309"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 20:56:27 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"135-KA/mAjYtPXhAAEs0a5784j2x6YM\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::kz6d7-1723496187460-6f3b3867b1d2"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"name\": \"Admin\",\n        \"parentPermissions\": [\n            {\n                \"name\": \"القراءة\",\n                \"permissions\": [\n                    {\n                        \"name\": \"الجديدة القراءة\",\n                        \"_id\": \"66ba76fb8c3ef6ca417ec165\"\n                    }\n                ],\n                \"_id\": \"66ba76fb8c3ef6ca417ec164\"\n            },\n            {\n                \"name\": \"كتابة\",\n                \"_id\": \"66ba76fb8c3ef6ca417ec166\",\n                \"permissions\": []\n            }\n        ],\n        \"_id\": \"66ba76fb8c3ef6ca417ec163\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "expired token failure",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njk5NDYwZTY0MWEwZjk2M2M3M2E3ODEiLCJpYXQiOjE3MjEzMjEyNDgsImV4cCI6MTcyMTMyMTMzOH0.Z2dFs976coFmfx1s05V22aN9UBooXmzLwj8rpx_51Gc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Admin\",\r\n  \"parentPermissions\": [\r\n    {\r\n      \"name\": \"القراءة\",\r\n      \"permissions\":{\r\n        \"name\":\"الجديدة القراءة\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"كتابة\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 20:56:50 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"54-BuY/+uZxiJliPb313vtV3AkQHzw\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::rh82b-1723496209936-4964c24bf28f"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"JWT is expired, Try Login again, please !!\"\n}"
+						},
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njk5NDYwZTY0MWEwZjk2M2M3M2E3ODEiLCJpYXQiOjE3MjEzMjEyNDgsImV4cCI6MTcyMTMyMTMzOH0.Z2dFs976coFmfx1s05V22aN9UBooXmzLwj8rpx_51Gc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"parentPermissions\": [\r\n    {\r\n      \"name\": \"القراءة\",\r\n      \"permissions\":{\r\n        \"name\":\"الجديدة القراءة\"\r\n      }\r\n    },\r\n    {\r\n      \"name\": \"كتابة\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "120"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:25:58 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"78-oY30WkAQ3wOFru3qlGs4+vK1sBQ\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::5cwrv-1723501558376-0bb22e6261dc"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"msg\": \"Role name is required !!\",\n            \"path\": \"name\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "get role by id",
@@ -123,7 +513,140 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b4de972eb89d3df82e7f0",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b4de972eb89d3df82e7f0"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "155"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 21:16:01 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"9b-GqcGDvIvBIlVhcyX+xHIPVSHD/8\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::8tt9p-1723497361202-c02f6d46eeea"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66b4de972eb89d3df82e7f0\",\n            \"msg\": \"Invalid Role id format !!\",\n            \"path\": \"id\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b4de972eb89d3df82e7f0e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b4de972eb89d3df82e7f0e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "255"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 21:16:41 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"ff-hseSKNBcQ0IQ/BD+L8986WWgIUA\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::dq2dd-1723497401105-ed1e887c45a9"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"_id\": \"66b4de972eb89d3df82e7f0e\",\n        \"name\": \"Admin\",\n        \"parentPermissions\": [\n            {\n                \"name\": \"القراءة\",\n                \"_id\": \"66b4de972eb89d3df82e7f0f\",\n                \"permissions\": []\n            },\n            {\n                \"name\": \"كتابة\",\n                \"_id\": \"66b4de972eb89d3df82e7f10\",\n                \"permissions\": []\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "update specific role",
@@ -162,7 +685,158 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b3861f6b37cb9be2968e27"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "89"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:26:33 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"59-Td+wCWFamxrGby/irWHhFXZyTas\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::skxln-1723501593524-1ec6701740e5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"Role not found for id: 66b3861f6b37cb9be2968e27\"\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"user\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b4de972eb89d3df82e7f0e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b4de972eb89d3df82e7f0e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "254"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:27:52 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"fe-8cPlLxTqHdNNW+aJvSbZ/491TpI\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::zfwgt-1723501672344-d302c8663f5a"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"_id\": \"66b4de972eb89d3df82e7f0e\",\n        \"name\": \"user\",\n        \"parentPermissions\": [\n            {\n                \"name\": \"القراءة\",\n                \"_id\": \"66b4de972eb89d3df82e7f0f\",\n                \"permissions\": []\n            },\n            {\n                \"name\": \"كتابة\",\n                \"_id\": \"66b4de972eb89d3df82e7f10\",\n                \"permissions\": []\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "delete specific role",
@@ -192,7 +866,140 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b4de972eb89d3df82e7f0",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b4de972eb89d3df82e7f0"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "155"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:28:19 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"9b-GqcGDvIvBIlVhcyX+xHIPVSHD/8\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::h7zwv-1723501698897-5f867a611150"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66b4de972eb89d3df82e7f0\",\n            \"msg\": \"Invalid Role id format !!\",\n            \"path\": \"id\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b4de972eb89d3df82e7f0e",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b4de972eb89d3df82e7f0e"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:28:47 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"36-dzQiDMI5qN7DXP8FncwPpTzD0U0\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::4l8qp-1723501726703-86849bb15605"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"msg\": \"Role deleted successfully\"\n}"
+						}
+					]
 				},
 				{
 					"name": "get parent permissions for specific role",
@@ -223,7 +1030,142 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "250"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:29:38 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"fa-Jjqo1CTf52mu3NcLP7ka/sjpEUM\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::d5wkg-1723501777510-5f0f8a44cad2"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"name\": \"القراءة\",\n            \"permissions\": [\n                {\n                    \"name\": \"الجديدة القراءة\",\n                    \"_id\": \"66b9faf042a706a571a25dbb\"\n                }\n            ],\n            \"_id\": \"66b9faf042a706a571a25dba\"\n        },\n        {\n            \"name\": \"كتابة\",\n            \"_id\": \"66b9faf042a706a571a25dbc\",\n            \"permissions\": []\n        }\n    ]\n}"
+						},
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db/level2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db",
+										"level2"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "357"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:29:57 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"165-RzC2keu7wuGxzJ+VIq/soSQAflo\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::wtm7c-1723501797712-445acb4e79be"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66b9faf042a706a571a25db\",\n            \"msg\": \"Invalid Role id format !!\",\n            \"path\": \"id\",\n            \"location\": \"params\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"66b9faf042a706a571a25db\",\n            \"msg\": \"Cast to ObjectId failed for value \\\"66b9faf042a706a571a25db\\\" (type string) at path \\\"_id\\\" for model \\\"Role\\\"\",\n            \"path\": \"id\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "post parent permissions for specific role",
@@ -263,7 +1205,236 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "بكرر تاني الايرور ده هيظهر طول ما فترة التوكن تنتهي",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"تعديل\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b3861f6b37cb9be2968e27",
+										"level2"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:31:08 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"54-BuY/+uZxiJliPb313vtV3AkQHzw\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::7wlcd-1723501868703-a41ba17934d0"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"JWT is expired, Try Login again, please !!\"\n}"
+						},
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"تعديل\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b3861f6b37cb9be2968e27",
+										"level2"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "180"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:33:12 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"b4-/vk03krzEvQn8JnDjPZ55CMjU+g\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::md7qj-1723501992433-4b3a09c976e8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66b3861f6b37cb9be2968e27\",\n            \"msg\": \"There is no role with id 66b3861f6b37cb9be2968e27\",\n            \"path\": \"id\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"تعديل\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "368"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:34:41 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"170-gUXiJUAd752K39wDkfl9HLrNV6Y\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::6ghx8-1723502080800-63bb4c055244"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"ParentPermission created successfully\",\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"name\": \"القراءة\",\n            \"permissions\": [\n                {\n                    \"name\": \"الجديدة القراءة\",\n                    \"_id\": \"66b9faf042a706a571a25dbb\"\n                }\n            ],\n            \"_id\": \"66b9faf042a706a571a25dba\"\n        },\n        {\n            \"name\": \"كتابة\",\n            \"_id\": \"66b9faf042a706a571a25dbc\",\n            \"permissions\": []\n        },\n        {\n            \"name\": \"تعديل\",\n            \"_id\": \"66ba8e017432958c806045b7\",\n            \"permissions\": []\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "update parent permission for specific role",
@@ -290,7 +1461,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2/66b3877caf70353666986e56",
+							"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66ba8e1f7432958c806045c4",
 							"host": [
 								"{{url}}"
 							],
@@ -298,13 +1469,245 @@
 								"api",
 								"v1",
 								"roles",
-								"66b3861f6b37cb9be2968e27",
+								"66b9faf042a706a571a25db9",
 								"level2",
-								"66b3877caf70353666986e56"
+								"66ba8e1f7432958c806045c4"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"مسح\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66ba8e1f7432958c806045c4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66ba8e1f7432958c806045c4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "141"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:37:48 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"8d-PC14IZcwyyTxn0waFcPnxSmGIiE\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::ztg7g-1723502267484-121be0b757e5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"ParentPermission updated successfully\",\n    \"status\": \"success\",\n    \"data\": {\n        \"name\": \"مسح\",\n        \"permissions\": [],\n        \"_id\": \"66ba8e1f7432958c806045c4\"\n    }\n}"
+						},
+						{
+							"name": "expired token as usual",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"مسح\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66ba8e1f7432958c806045c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66ba8e1f7432958c806045c"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:38:15 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"54-BuY/+uZxiJliPb313vtV3AkQHzw\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::qtxcq-1723502295083-e6e1afa35e21"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"JWT is expired, Try Login again, please !!\"\n}"
+						},
+						{
+							"name": "validation error",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"مسح\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66ba8e1f7432958c806045c",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66ba8e1f7432958c806045c"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "384"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:39:52 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"180-ZLd5jq1g3PuvqHA5GPWsJMlM5EQ\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::kzfd8-1723502391519-a5510748b8fe"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66ba8e1f7432958c806045c\",\n            \"msg\": \"Invalid parentPermission id format !!\",\n            \"path\": \"parentPermissionId\",\n            \"location\": \"params\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"66ba8e1f7432958c806045c\",\n            \"msg\": \"There is no parentPermission with id 66ba8e1f7432958c806045c in Role 66b9faf042a706a571a25db9\",\n            \"path\": \"parentPermissionId\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "delete parent permission for specific role",
@@ -331,7 +1734,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2/66b3877caf70353666986e56",
+							"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66ba8e1f7432958c806045c4",
 							"host": [
 								"{{url}}"
 							],
@@ -339,13 +1742,168 @@
 								"api",
 								"v1",
 								"roles",
-								"66b3861f6b37cb9be2968e27",
+								"66b9faf042a706a571a25db9",
 								"level2",
-								"66b3877caf70353666986e56"
+								"66ba8e1f7432958c806045c4"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Laptops\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66ba8e1f7432958c806045c4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66ba8e1f7432958c806045c4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:40:35 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"5f-KSgx9SafiFkmv1uzgceuai4ocZU\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::5cwrv-1723502433939-578e32af4b9c"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"_id\": \"66ba8e1f7432958c806045c4\",\n        \"permissions\": [],\n        \"name\": \"مسح\"\n    }\n}"
+						},
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Laptops\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66ba8e1f7432958c806045c4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66ba8e1f7432958c806045c4"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "241"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:40:57 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"f1-tvF/xvi3WOsI8VWOu4IuVmhklJo\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::skxln-1723502457346-dc96871cbf6c"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66ba8e1f7432958c806045c4\",\n            \"msg\": \"There is no parentPermission with id 66ba8e1f7432958c806045c4 in role 66b9faf042a706a571a25db9\",\n            \"path\": \"parentPermissionId\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "get permissions for specific parent permission",
@@ -363,7 +1921,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2/66b3877caf70353666986e56/level3",
+							"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3",
 							"host": [
 								"{{url}}"
 							],
@@ -371,14 +1929,153 @@
 								"api",
 								"v1",
 								"roles",
-								"66b3861f6b37cb9be2968e27",
+								"66b9faf042a706a571a25db9",
 								"level2",
-								"66b3877caf70353666986e56",
+								"66b9faf042a706a571a25dba",
 								"level3"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66b9faf042a706a571a25dba",
+										"level3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "103"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:45:19 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"67-Bc+QyvPQDlO059ak2kmHRhtaQm4\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::qllwn-1723502718525-4ebb30c98777"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"name\": \"الجديدة القراءة\",\n            \"_id\": \"66b9faf042a706a571a25dbb\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25db1/level3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66b9faf042a706a571a25db1",
+										"level3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "241"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:46:07 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"f1-Ofj9WulGf8s0kC/ynajcR+fnHy4\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::h7zwv-1723502767400-c78e00da1561"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66b9faf042a706a571a25db1\",\n            \"msg\": \"There is no parentPermission with id 66b9faf042a706a571a25db1 in role 66b9faf042a706a571a25db9\",\n            \"path\": \"parentPermissionId\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "post permission for specific parent permission",
@@ -405,7 +2102,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2/66b3877caf70353666986e56/level3",
+							"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3",
 							"host": [
 								"{{url}}"
 							],
@@ -413,14 +2110,171 @@
 								"api",
 								"v1",
 								"roles",
-								"66b3861f6b37cb9be2968e27",
+								"66b9faf042a706a571a25db9",
 								"level2",
-								"66b3877caf70353666986e56",
+								"66b9faf042a706a571a25dba",
 								"level3"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"قراءة المنتجات\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2/66b3877caf70353666986e56/level3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b3861f6b37cb9be2968e27",
+										"level2",
+										"66b3877caf70353666986e56",
+										"level3"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "349"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:47:01 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"15d-Qx83ORLdr1/yiqO0fbSrr3tJPIc\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::svrd8-1723502820994-f5d3af09dd2a"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66b3861f6b37cb9be2968e27\",\n            \"msg\": \"There is no role with id 66b3861f6b37cb9be2968e27\",\n            \"path\": \"id\",\n            \"location\": \"params\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"66b3877caf70353666986e56\",\n            \"msg\": \"Cannot read properties of null (reading 'parentPermissions')\",\n            \"path\": \"parentPermissionId\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"قراءة المنتجات\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66b9faf042a706a571a25dba",
+										"level3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "434"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:47:58 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"1b2-uUaPzugNJ+cxGyRSmMQ2qFINtxU\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::d5wkg-1723502878077-e5d6dd26ce3c"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Permission created successfully\",\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"name\": \"القراءة\",\n            \"permissions\": [\n                {\n                    \"name\": \"الجديدة القراءة\",\n                    \"_id\": \"66b9faf042a706a571a25dbb\"\n                },\n                {\n                    \"name\": \"قراءة المنتجات\",\n                    \"_id\": \"66ba911e7432958c80604667\"\n                }\n            ],\n            \"_id\": \"66b9faf042a706a571a25dba\"\n        },\n        {\n            \"name\": \"كتابة\",\n            \"_id\": \"66b9faf042a706a571a25dbc\",\n            \"permissions\": []\n        },\n        {\n            \"name\": \"تعديل\",\n            \"_id\": \"66ba8e017432958c806045b7\",\n            \"permissions\": []\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "update permission for specific parent permission",
@@ -447,7 +2301,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2/66b3877caf70353666986e56/level3/66b38a51f7d2545107a8ef10",
+							"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3/66ba911e7432958c80604667",
 							"host": [
 								"{{url}}"
 							],
@@ -455,15 +2309,174 @@
 								"api",
 								"v1",
 								"roles",
-								"66b3861f6b37cb9be2968e27",
+								"66b9faf042a706a571a25db9",
 								"level2",
-								"66b3877caf70353666986e56",
+								"66b9faf042a706a571a25dba",
 								"level3",
-								"66b38a51f7d2545107a8ef10"
+								"66ba911e7432958c80604667"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"مسح منتجات\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3/66ba911e7432958c80604667",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66b9faf042a706a571a25dba",
+										"level3",
+										"66ba911e7432958c80604667"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "280"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:49:14 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"118-LM7hfcrOVmmO6jXnveEkF8wyMME\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::72vr9-1723502953340-586abeec4d9a"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Permission updated successfully\",\n    \"status\": \"success\",\n    \"data\": {\n        \"name\": \"القراءة\",\n        \"permissions\": [\n            {\n                \"name\": \"الجديدة القراءة\",\n                \"_id\": \"66b9faf042a706a571a25dbb\"\n            },\n            {\n                \"name\": \"مسح منتجات\",\n                \"_id\": \"66ba911e7432958c80604667\"\n            }\n        ],\n        \"_id\": \"66b9faf042a706a571a25dba\"\n    }\n}"
+						},
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"مسح منتجات\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3/66ba911e7432958c8060466",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66b9faf042a706a571a25dba",
+										"level3",
+										"66ba911e7432958c8060466"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "405"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:49:58 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"195-xDCePZV6SyKGaKDwA1lGIH9aG8E\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::6l284-1723502997827-162d64825067"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66ba911e7432958c8060466\",\n            \"msg\": \"Invalid permission id format !!\",\n            \"path\": \"permissionId\",\n            \"location\": \"params\"\n        },\n        {\n            \"type\": \"field\",\n            \"value\": \"66ba911e7432958c8060466\",\n            \"msg\": \"There is no permission with id 66ba911e7432958c8060466 in parentPermission 66b9faf042a706a571a25dba in role 66b9faf042a706a571a25db9\",\n            \"path\": \"permissionId\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "delete permission for specific parent permission",
@@ -490,7 +2503,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v1/roles/66b3861f6b37cb9be2968e27/level2/66b3877caf70353666986e56/level3/66b38adee77cb4dae0e40c11",
+							"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3/66ba911e7432958c80604667",
 							"host": [
 								"{{url}}"
 							],
@@ -498,15 +2511,253 @@
 								"api",
 								"v1",
 								"roles",
-								"66b3861f6b37cb9be2968e27",
+								"66b9faf042a706a571a25db9",
 								"level2",
-								"66b3877caf70353666986e56",
+								"66b9faf042a706a571a25dba",
 								"level3",
-								"66b38adee77cb4dae0e40c11"
+								"66ba911e7432958c80604667"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "expired token again and again",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3/66ba911e7432958c80604667",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66b9faf042a706a571a25dba",
+										"level3",
+										"66ba911e7432958c80604667"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "84"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:50:33 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"54-BuY/+uZxiJliPb313vtV3AkQHzw\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::tkh9p-1723503033727-bb5f7d33ad79"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"JWT is expired, Try Login again, please !!\"\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3/66ba911e7432958c80604667",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66b9faf042a706a571a25dba",
+										"level3",
+										"66ba911e7432958c80604667"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:52:41 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"5b-59gqSvvAhmePmvx/undQGHfqRK8\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::bg6gw-1723503160937-08765566d0c8"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"name\": \"مسح منتجات\",\n        \"_id\": \"66ba911e7432958c80604667\"\n    }\n}"
+						},
+						{
+							"name": "validation",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/roles/66b9faf042a706a571a25db9/level2/66b9faf042a706a571a25dba/level3/66ba911e7432958c80604667",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"roles",
+										"66b9faf042a706a571a25db9",
+										"level2",
+										"66b9faf042a706a571a25dba",
+										"level3",
+										"66ba911e7432958c80604667"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "274"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:53:19 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"112-6RGhgPIUKNeE62nEdQwona5mFrM\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::tkh9p-1723503198940-79112f22c68a"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"66ba911e7432958c80604667\",\n            \"msg\": \"There is no permission with id 66ba911e7432958c80604667 in parentPermission 66b9faf042a706a571a25dba in role 66b9faf042a706a571a25db9\",\n            \"path\": \"permissionId\",\n            \"location\": \"params\"\n        }\n    ]\n}"
+						}
+					]
 				}
 			]
 		},
@@ -520,6 +2771,32 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"pm.test(\"Response status code is 500\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields - Error Status and Error Message\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData).to.have.property('Error Status');\r",
+									"    pm.expect(responseData).to.have.property('Error Message');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Error Status is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData[\"Error Status\"]).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error Message is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData[\"Error Message\"]).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");\r",
+									"});\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript",
@@ -532,7 +2809,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"Mostafa Samy7\",\r\n    \"email\":\"mostafasamysfsf@gmail.com\",\r\n    \"password\":\"Mostafa@2002\",\r\n    \"passwordConfirm\":\"Mostafa@2002\"\r\n}",
+							"raw": "{\r\n    \"username\":\"Mostafa Samy\",\r\n    \"email\":\"mostafasamysfsf@gmail.com\",\r\n    \"password\":\"Mostafa@2002\",\r\n    \"passwordConfirm\":\"Mostafa@2002\",\r\n    \"phone\":\"01009007842\",\r\n    \"firstName\":\"Mostafa\",\r\n    \"lastName\":\"Samy\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -550,9 +2827,149 @@
 								"auth",
 								"signup"
 							]
-						}
+						},
+						"description": "# Auth Signup\n\nThis endpoint allows users to sign up by providing their username, email, password, and password confirmation.\n\n## Request Body\n\n- `username` (string, required): The username of the user.\n    \n- `email` (string, required): The email address of the user.\n    \n- `password` (string, required): The password for the account.\n    \n- `passwordConfirm` (string, required): Confirmation of the password.\n    \n\n## Response\n\n### Success 200 OK\n\nIn case of a successful signup, the response will have a status code of 200 and a JSON object with user details.\n\n### Failure 500 Internal Server Error\n\nIf there is an internal server error, the response will have a status code of 500 along with an error status and message in the JSON format.\n\n### Validation Errors\n\nIn case of validation errors, the response will include details about the specific validation errors along with the appropriate status code."
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Validation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"Mostafa Samy7\",\r\n    \"email\":\"mostafasamysfsf@gmail.com\",\r\n    \"password\":\"Mostafa@2002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "350"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 20:58:49 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"15e-Bksac5GjZwegrNXEVTxeEnuZF/c\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::rh82b-1723496329030-db7719c847eb"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Array of errors about validation\": [\n        {\n            \"type\": \"field\",\n            \"value\": \"mostafasamysfsf@gmail.com\",\n            \"msg\": \"Email already exists !!\",\n            \"path\": \"email\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Confirm password is required !!\",\n            \"path\": \"passwordConfirm\",\n            \"location\": \"body\"\n        },\n        {\n            \"type\": \"field\",\n            \"msg\": \"Passwords do not match !!\",\n            \"path\": \"passwordConfirm\",\n            \"location\": \"body\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"Mostafa Samy79\",\r\n    \"email\":\"mostafasamysfsf7@gmail.com\",\r\n    \"password\":\"Mostafa@2002\",\r\n    \"passwordConfirm\":\"Mostafa@2002\",\r\n    \"phone\":\"+201009007842\",\r\n    \"firstName\":\"Mostafa\",\r\n    \"lastName\":\"Samy\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/signup",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-j7gWAbzskAATaAjbWlJjGr13Eic\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 21:50:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"msg\": \"An email sent to your email address to verify your account\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Verify Email",
@@ -560,7 +2977,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v1/auth/verify/66ba1a482b454a2ab3a92eb0/fdbd62522f9dd1ad832ef0c660258e166f6c20d6c85be97be4ff25785334c8e5",
+							"raw": "{{url}}/api/v1/auth/verify/66ba88ba57a43b2abae0f497/cb632e9ad85b2b157eab120a9310202a0e9b6e7a9a1faf1cd0916eb475ba3bb4",
 							"host": [
 								"{{url}}"
 							],
@@ -569,12 +2986,125 @@
 								"v1",
 								"auth",
 								"verify",
-								"66ba1a482b454a2ab3a92eb0",
-								"fdbd62522f9dd1ad832ef0c660258e166f6c20d6c85be97be4ff25785334c8e5"
+								"66ba88ba57a43b2abae0f497",
+								"cb632e9ad85b2b157eab120a9310202a0e9b6e7a9a1faf1cd0916eb475ba3bb4"
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/auth/verify/66ba1a482b454a2ab3a92eb0/fdbd62522f9dd1ad832ef0c660258e166f6c20d6c85be97be4ff25785334c8e5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"verify",
+										"66ba1a482b454a2ab3a92eb0",
+										"fdbd62522f9dd1ad832ef0c660258e166f6c20d6c85be97be4ff25785334c8e5"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "312"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"138-ukFg8IBXVNvopO4Z4N2MuSftW3A\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:10:06 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Status Details\": {\n        \"statusCode\": 400,\n        \"status\": \"fail\",\n        \"isOperational\": true\n    },\n    \"Error Message\": \"Invalid user\",\n    \"Error Stack\": \"Error: Invalid user\\n    at D:\\\\Practical\\\\Gcc\\\\services\\\\authService.js:329:26\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/v1/auth/verify/66ba88ba57a43b2abae0f497/cb632e9ad85b2b157eab120a9310202a0e9b6e7a9a1faf1cd0916eb475ba3bb4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"verify",
+										"66ba88ba57a43b2abae0f497",
+										"cb632e9ad85b2b157eab120a9310202a0e9b6e7a9a1faf1cd0916eb475ba3bb4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-D+2zPUV3Inc4z47qNfcu/MXteyM\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:13:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"msg\": \"Email has been verified successfully :)\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Log In",
@@ -584,7 +3114,8 @@
 							"script": {
 								"exec": [
 									"// Fixed the ReferenceError by defining the token variable\r",
-									"pm.environment.set(\"JWT\", pm.response.json()[\"JWT Token\"]);"
+									"if(pm.response.json()[\"JWT Token\"] !== null)\r",
+									"    pm.environment.set(\"JWT\", pm.response.json()[\"JWT Token\"]);"
 								],
 								"type": "text/javascript",
 								"packages": {}
@@ -596,7 +3127,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    // \"username\":\"mostafasamysfsf00@hotmail.com\",\r\n    // \"password\":\"Mostafa@2002\"\r\n    \"username\":\"mostafasamysfsf@gmail.com\",\r\n    \"password\":\"Mostafa@2002\"\r\n}",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n    // \"username\":\"mostafasamysfsf@gmail.com\",\r\n    // \"password\":\"Mostafa@2002\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -616,7 +3147,205 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Fail",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admi\"\r\n    // \"username\":\"mostafasamysfsf@gmail.com\",\r\n    // \"password\":\"Mostafa@2002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "411"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"19b-4xQDK8av+tBR5OfXRt5+wUurqQA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:13:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Status Details\": {\n        \"statusCode\": 401,\n        \"status\": \"fail\",\n        \"isOperational\": true\n    },\n    \"Error Message\": \"Incorrect Username or Password !!\\n ### Note that if you forgot your username, use your email instead :)\",\n    \"Error Stack\": \"Error: Incorrect Username or Password !!\\n ### Note that if you forgot your username, use your email instead :)\\n    at D:\\\\Practical\\\\Gcc\\\\services\\\\authService.js:76:7\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n    // \"username\":\"mostafasamysfsf@gmail.com\",\r\n    // \"password\":\"Mostafa@2002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmJhODMzZTJhMDRiYzMzMzBmYTE1MTUiLCJpYXQiOjE3MjM1MDA4NTYsImV4cCI6MTcyMzU4NzI1Nn0.3FyQxiK6LE_zJRtfwLQ6h9u5I7IT7UhP0ENavioAlLY; Max-Age=86400; Path=/; Expires=Tue, 13 Aug 2024 22:14:16 GMT; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "534"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"216-pLWj8szEOQMpoDPN5kPW1JI9I54\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:14:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"Welcome Message\": \"Welcome back, admin\",\n    \"JWT Token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmJhODMzZTJhMDRiYzMzMzBmYTE1MTUiLCJpYXQiOjE3MjM1MDA4NTYsImV4cCI6MTcyMzUwMTE1Nn0.orrTCYKPLIn6beKUFq1Q4MvVd-IuDFHNctBPzUicOAk\",\n    \"Your Data\": {\n        \"_id\": \"66ba833e2a04bc3330fa1515\",\n        \"username\": \"admin\",\n        \"email\": \"admin@gmail.com\",\n        \"role\": \"admin\",\n        \"password\": \"$2b$12$pWagQ32enPdTbT9VYMiOgeotSmjAIrhFPrG26d2QfuuublpJ0iiFm\",\n        \"verified\": true,\n        \"createdAt\": \"2024-08-12T21:48:46.429Z\",\n        \"updatedAt\": \"2024-08-12T21:48:46.429Z\",\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Failure with already logged in",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n    // \"username\":\"mostafasamysfsf@gmail.com\",\r\n    // \"password\":\"Mostafa@2002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "337"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"151-n3Vzj/odrLEbW8Df1hcLypE0wzI\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:14:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Status Details\": {\n        \"statusCode\": 401,\n        \"status\": \"fail\",\n        \"isOperational\": true\n    },\n    \"Error Message\": \"You are already logged in\",\n    \"Error Stack\": \"Error: You are already logged in\\n    at D:\\\\Practical\\\\Gcc\\\\services\\\\authService.js:71:17\\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Refresh Token",
@@ -661,7 +3390,166 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/refresh",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Age",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:17:11 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"da-Zbuf1waSJvO8WRC1kkfhF6Lp/JY\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::csrfm-1723501028181-8c41b7276f80"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"New Access Token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmJhNmU3NGY0ODU4NmZhY2YyYmZlZDciLCJpYXQiOjE3MjM1MDEwMzEsImV4cCI6MTcyMzUwMTMzMX0.6OtALdh1CGe0HKbLIQ7Q0CPMmV5HZHDkRzagIJw4qa0\"\n}"
+						},
+						{
+							"name": "Fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/refresh",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Age",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:17:53 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"4d-6ptktbXtqsOJMWO+ycGU587+KEU\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::k797m-1723501073161-2d9118aaa31d"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"Unauthorized, Please Login Again !!\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Logout",
@@ -716,7 +3604,241 @@
 							]
 						}
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "223"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 20:51:05 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"df-XJObFm4HphWMUV2YTX1pPM7mxNQ\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Secure"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::jx7q6-1723495865255-832c01edd7d5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"New Expired JWT Token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmJhNzMxN2UzNTFhMTBhNTk0Y2JlY2IiLCJpYXQiOjE3MjM0OTU4NjUsImV4cCI6MTcyMzQ5NTg2Nn0.Bhv2IlUb9w9ItWPKYTi2wUAFKNeo5cQxRX7WfAX7WEk\"\n}"
+						},
+						{
+							"name": "fail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Age",
+									"value": "0"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "127"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:18:59 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"7f-7cpiPw7jZWu/Ypev+QaND/LrOUM\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "MISS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::bg6gw-1723501139234-5a8ba2fcca31"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"You should login to get authorized resources from this route : /api/v1/auth/logout !!\"\n}"
+						},
+						{
+							"name": "Another Failure when no token",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/auth/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "public, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Content-Length",
+									"value": "79"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Aug 2024 22:19:23 GMT"
+								},
+								{
+									"key": "Etag",
+									"value": "W/\"4f-MRoyZbJjlUCYbqiXzmFCbC01LKo\""
+								},
+								{
+									"key": "Server",
+									"value": "Vercel"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=63072000; includeSubDomains; preload"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "X-Vercel-Cache",
+									"value": "BYPASS"
+								},
+								{
+									"key": "X-Vercel-Id",
+									"value": "cdg1::iad1::559sz-1723501163907-bbe64c36a5d3"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Error Status\": \"fail\",\n    \"Error Message\": \"Invalid token, please login again ...\"\n}"
+						}
+					]
 				},
 				{
 					"name": "Forgot Password",
