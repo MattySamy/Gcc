@@ -80,10 +80,6 @@ exports.login = asyncHandler(async (req, res, next) => {
     );
   }
 
-  // Check if user is verified
-  if (!user.verified) {
-    return next(new ApiError("Please verify your account first :'(", 401));
-  }
   // 3) generate token
   const token = generateToken(user._id);
 
@@ -143,6 +139,16 @@ exports.authProtect = asyncHandler(async (req, res, next) => {
   if (!currentUser) {
     return next(
       new ApiError("User that belong to that token not existed :'(", 401)
+    );
+  }
+
+  // 4) Check if user account is verified or not
+  if (!currentUser.verified) {
+    return next(
+      new ApiError(
+        "Your account is not verified, please verify your account first",
+        401
+      )
     );
   }
 
