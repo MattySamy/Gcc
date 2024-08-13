@@ -22,13 +22,16 @@ exports.signUp = (...roles) =>
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
+      phone: req.body.phone,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
     });
     user = await user;
 
-    let EmailToken = await new Token({
+    let EmailToken = await Token.create({
       userId: user._id,
       token: crypto.randomBytes(32).toString("hex"),
-    }).save();
+    });
 
     const message = `Please click here to verify your account https://gcc-eosin.vercel.app/api/v1/auth/verify/${
       (await user)._id
@@ -321,15 +324,15 @@ exports.verifyPasswordResetCode = asyncHandler(async (req, res, next) => {
 // @route GET /api/v1/auth/verify/:id/:token
 // @access Private
 
-exports.verifyEmail = asyncHandler(async (req, res) => {
+exports.verifyEmail = asyncHandler(async (req, res, next) => {
   const user = await UserModel.findOne({ _id: req.params.id });
-  if (!user) return res.status(400).send("Invalid link");
+  if (!user) return next(new ApiError("Invalid user", 400));
 
   const token = await Token.findOne({
     userId: user._id,
     token: req.params.token,
   });
-  if (!token) return res.status(400).send("Invalid link");
+  if (!token) return next(new ApiError("Invalid token", 400));
 
   await UserModel.findByIdAndUpdate(
     user._id,

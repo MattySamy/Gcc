@@ -50,6 +50,18 @@ exports.signUpValidator = [
       }
       return true;
     }),
+  check("phone")
+    .notEmpty()
+    .withMessage("Phone number is required !!")
+    .isMobilePhone(
+      ["ar-EG", "ar-SA", "en-US", "en-GB", "en-AU", "ar-AE", "ar-SA", "ar-KW"],
+      {
+        strictMode: true,
+      }
+    )
+    .withMessage("Invalid phone number !!"),
+  check("firstName").optional().isAlpha().withMessage("Invalid first name !!"),
+  check("lastName").optional().isAlpha().withMessage("Invalid last name !!"),
 
   validatorMiddleware,
 ];

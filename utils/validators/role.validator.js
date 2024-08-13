@@ -46,7 +46,7 @@ exports.createParentPermissionValidator = [
       }
       return true;
     }),
-  check("name").optional(),
+  check("name").notEmpty().withMessage("Role name is required !!"),
   check("permissions")
     .optional()
     .isArray()
@@ -212,7 +212,7 @@ exports.createPermissionValidator = [
       }
       return true;
     }),
-  check("name").optional(),
+  check("name").notEmpty().withMessage("Permission name is required !!"),
   validatorMiddleware,
 ];
 

@@ -56,6 +56,18 @@ exports.createUserValidator = [
     .optional()
     .isIn(["user", "admin"])
     .withMessage("Invalid role !!"),
+  check("phone")
+    .notEmpty()
+    .withMessage("Phone number is required !!")
+    .isMobilePhone(
+      ["ar-EG", "ar-SA", "en-US", "en-GB", "en-AU", "ar-AE", "ar-SA", "ar-KW"],
+      {
+        strictMode: true,
+      }
+    )
+    .withMessage("Invalid phone number !!"),
+  check("firstName").optional().isAlpha().withMessage("Invalid first name !!"),
+  check("lastName").optional().isAlpha().withMessage("Invalid last name !!"),
 
   validatorMiddleware,
 ];
@@ -81,6 +93,12 @@ exports.updateUserValidator = [
     .withMessage(
       "Invalid email format, Only Gmail, Yahoo, Outlook and Hotmail emails are allowed !!"
     ),
+  check("phone")
+    .optional()
+    .isMobilePhone()
+    .withMessage("Invalid phone number !!"),
+  check("firstName").optional().isAlpha().withMessage("Invalid first name !!"),
+  check("lastName").optional().isAlpha().withMessage("Invalid last name !!"),
   validatorMiddleware,
 ];
 
