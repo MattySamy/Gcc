@@ -6,6 +6,8 @@ require("dotenv").config({ path: "./config.env" });
 
 const { ApiError } = require("./utils/errorHandler");
 
+const cors = require("cors");
+
 const { globalErrorHandler } = require("./middlewares/error.middleware");
 
 const { mongoConnect } = require("./config/mongoConnection");
@@ -24,6 +26,15 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
   console.log(`node: ${process.env.NODE_ENV}`);
 }
+
+app.use(
+  cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
