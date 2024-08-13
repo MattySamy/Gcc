@@ -9,7 +9,7 @@ exports.createAdmin = async () => {
     await UserModel.create({
       username: "admin",
       email: "admin@gmail.com",
-      password: "admin",
+      password: "admin123",
       verified: true,
       role: "admin",
     })
