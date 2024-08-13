@@ -106,6 +106,7 @@ exports.login = asyncHandler(async (req, res, next) => {
     status: "success",
     "Welcome Message": `Welcome back, ${user.username}`,
     "JWT Token": token,
+    "JWT Refresh Token": refreshToken,
     "Your Data": user,
   });
 });
