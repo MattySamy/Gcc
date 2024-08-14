@@ -6,6 +6,10 @@ put this [deployed link](https://gcc-eosin.vercel.app) in variables collection i
 
 ### An Example for env varibles in `config.env`:
 
+![Example](Example.png)
+
+#### You put that environment variables on `config.env`
+
 ```
 PORT=5000
 NODE_ENV=development
