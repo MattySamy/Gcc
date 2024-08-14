@@ -1,10 +1,22 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { check } = require("express-validator");
+const { phone } = require("phone");
 
 const validatorMiddleware = require("../../middlewares/validatorErrorHandling.middleware");
 const UserModel = require("../../models/user.model");
+const CountryModel = require("../../models/country.model");
 
 exports.signUpValidator = [
+  check("country")
+    .notEmpty()
+    .withMessage("Country is required !!")
+    .custom(async (val) => {
+      const country = await CountryModel.findOne({ name: val });
+      if (!country) {
+        throw new Error(`There is no country with name ${val}`);
+      }
+      return true;
+    }),
   check("username")
     .notEmpty()
     .withMessage("User name is required !!")
@@ -53,13 +65,34 @@ exports.signUpValidator = [
   check("phone")
     .notEmpty()
     .withMessage("Phone number is required !!")
-    .isMobilePhone(
-      ["ar-EG", "ar-SA", "en-US", "en-GB", "en-AU", "ar-AE", "ar-SA", "ar-KW"],
-      {
-        strictMode: true,
+    .custom(async (value, { req }) => {
+      const country = await CountryModel.findOne({ name: req.body.country });
+      if (!country) {
+        throw new Error(`Invalid country ${req.body.country} !!`);
       }
-    )
-    .withMessage("Invalid phone number !!"),
+      if (value.startsWith(country.code)) {
+        value = value.replace(country.code, "");
+      }
+      const phoneValid = phone(value, {
+        country: country.tag,
+      });
+      if (!phoneValid.isValid) {
+        throw new Error(`Invalid phone number ${value} !!`);
+      }
+      if (
+        phoneValid.countryCode !==
+        (await CountryModel.findOne({ name: req.body.country })).code
+      ) {
+        throw new Error(`Invalid ${country.name} Code !!`);
+      }
+      if (
+        phoneValid.countryIso2 !==
+        (await CountryModel.findOne({ name: req.body.country })).tag
+      ) {
+        throw new Error(`Invalid ${country.name} Tag ${country.tag} !!`);
+      }
+      return true;
+    }),
   check("firstName").optional().isAlpha().withMessage("Invalid first name !!"),
   check("lastName").optional().isAlpha().withMessage("Invalid last name !!"),
 

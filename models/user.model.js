@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
-
+const { phone } = require("phone");
 const bcrypt = require("bcrypt");
+
+const CountryModel = require("./country.model");
 
 const userSchema = new mongoose.Schema(
   {
@@ -27,6 +29,10 @@ const userSchema = new mongoose.Schema(
     passwordResetCode: String,
     passwordResetExpires: Date,
     verified: { type: Boolean, default: false },
+    country: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
@@ -37,6 +43,49 @@ userSchema.pre("save", async function (next) {
   const salt = await bcrypt.hash(this.password, 12);
   this.password = salt;
   next();
+});
+
+userSchema.post("validate", async (doc) => {
+  const country = await CountryModel.findOne({
+    name: doc.country,
+  }).select("code tag");
+
+  if (!country) {
+    throw new Error("Invalid country !!");
+  }
+
+  // Remove the country code if it exists in the phone number
+  if (doc.phone.startsWith(country.code)) {
+    doc.phone = doc.phone.replace(country.code, "");
+  }
+
+  // Rebuild the phone number with the country code
+  const fullPhoneNumber = doc.phone;
+
+  // Validate the phone number using the phone package
+  const phoneValid = phone(fullPhoneNumber, {
+    country: country.tag, // Use country tag for validation (e.g., "EG" for Egypt)
+  });
+
+  // Check if the phone number is valid
+  if (!phoneValid.isValid) {
+    throw new Error(`Invalid phone number ${fullPhoneNumber} !!`);
+  }
+
+  // Validate that the country code from the phone number matches the country's code
+  if (phoneValid.countryCode !== country.code) {
+    throw new Error(`Invalid ${country.name} Code !!`);
+  }
+
+  // Validate that the country tag matches
+  if (phoneValid.countryIso2 !== country.tag) {
+    throw new Error(`Invalid ${country.name} Tag !!`);
+  }
+
+  // Update the phone number on the document with the valid formatted number
+  doc.phone = phoneValid.phoneNumber;
+
+  return doc;
 });
 
 module.exports = mongoose.model("User", userSchema);

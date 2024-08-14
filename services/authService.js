@@ -19,6 +19,7 @@ exports.signUp = (...roles) =>
   asyncHandler(async (req, res, next) => {
     // 1) Create user
     let user = UserModel.create({
+      country: req.body.country,
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
@@ -148,7 +149,7 @@ exports.authProtect = asyncHandler(async (req, res, next) => {
     return next(
       new ApiError(
         "Your account is not verified, please verify your account first",
-        401
+        403
       )
     );
   }
