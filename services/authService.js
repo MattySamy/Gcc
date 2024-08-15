@@ -36,13 +36,21 @@ exports.signUp = (...roles) =>
 
     const message = `Please click here to verify your account https://gcc-eosin.vercel.app/api/v1/auth/verify/${
       (await user)._id
-    }/${EmailToken.token}`;
+    }/${EmailToken.token}
+    <div style="font-family: 'Courier New', Courier, monospace;">
+    Note that your <span style="font-weight:bold;font-size: 18px;">Username</span>: <h1 style="color: red;">${
+      user.username
+    }</h1> your <span style="font-weight:bold;font-size: 18px;">Email</span> is <h1 style="color: red;">${
+      user.email
+    }</h1>
+    If you want to Log In, You can use your username or email mentioned above.
+    </div>`;
 
     try {
       await sendEmail({
         email: (await user).email,
         subject: "Email Verification",
-        message,
+        html: message,
       });
     } catch (err) {
       console.log(err);
@@ -75,7 +83,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   if (!user || !(await bcrypt.compare(req.body.password, user.password))) {
     return next(
       new ApiError(
-        "Incorrect Username or Password !!\n ### Note that if you forgot your username, use your email instead :)",
+        "Incorrect Username or Password, Note that if you forgot your username => you can just return to your verified email we've sent to you and you will find it or you can just use your email instead :)",
         401
       )
     );
@@ -105,7 +113,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   // 6) send response to client side
   res.status(201).json({
     status: "success",
-    "Welcome Message": `Welcome back, ${user.username}`,
+    "Welcome Message": `Welcome back, ${user.username} !!`,
     "JWT Token": token,
     "JWT Refresh Token": refreshToken,
     "Your Data": user,

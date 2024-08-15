@@ -18,10 +18,9 @@ exports.signUpValidator = [
       return true;
     }),
   check("username")
-    .notEmpty()
-    .withMessage("User name is required !!")
+    .optional()
     .isLength({ min: 3 })
-    .withMessage("Too short User name !!"),
+    .withMessage("Too short User username !!"),
   check("email")
     .notEmpty()
     .withMessage("User email is required !!")
@@ -93,8 +92,50 @@ exports.signUpValidator = [
       }
       return true;
     }),
-  check("firstName").optional().isAlpha().withMessage("Invalid first name !!"),
-  check("lastName").optional().isAlpha().withMessage("Invalid last name !!"),
+  check("firstName")
+    .notEmpty()
+    .withMessage("First name is required !!")
+    .custom((value) => {
+      // make if statement for first name if has special characters or numbers then return error
+      if (!value.match(/^[a-zA-Z]+$/)) {
+        const numberCheck = value.match(/[0-9]/g);
+        const specialCheck = value.match(
+          /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/g
+        );
+        throw new Error(
+          `Invalid first name because it has ${
+            numberCheck
+              ? "numbers"
+              : specialCheck
+              ? "special characters"
+              : "other characters"
+          } !!`
+        );
+      }
+      return true;
+    }),
+  check("lastName")
+    .notEmpty()
+    .withMessage("Last name is required !!")
+    .custom((value) => {
+      // make if statement for first name if has special characters or numbers then return error
+      if (!value.match(/^[a-zA-Z]+$/)) {
+        const numberCheck = value.match(/[0-9]/g);
+        const specialCheck = value.match(
+          /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/g
+        );
+        throw new Error(
+          `Invalid last name because it has ${
+            numberCheck
+              ? "numbers"
+              : specialCheck
+              ? "special characters"
+              : "other characters"
+          } !!`
+        );
+      }
+      return true;
+    }),
 
   validatorMiddleware,
 ];

@@ -6,7 +6,7 @@ const CountryModel = require("./country.model");
 
 const userSchema = new mongoose.Schema(
   {
-    username: { type: String, required: true, unique: true },
+    username: { type: String, unique: true },
     email: { type: String, required: true, unique: true },
     firstName: { type: String },
     lastName: { type: String },
@@ -31,7 +31,6 @@ const userSchema = new mongoose.Schema(
     verified: { type: Boolean, default: false },
     country: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }
@@ -84,7 +83,15 @@ userSchema.post("validate", async (doc) => {
 
   // Update the phone number on the document with the valid formatted number
   doc.phone = phoneValid.phoneNumber;
-
+  if (!doc.username) {
+    doc.username = doc.firstName + doc.lastName;
+    const user = await mongoose.model("User").findOne({
+      username: doc.username,
+    });
+    if (user) {
+      doc.username = doc.username + Math.floor(Math.random() * 100000);
+    }
+  }
   return doc;
 });
 

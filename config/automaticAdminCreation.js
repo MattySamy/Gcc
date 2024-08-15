@@ -7,9 +7,11 @@ exports.createAdmin = async () => {
   });
   if (!adminExists) {
     await UserModel.create({
+      country: "Egypt",
       username: "admin",
       email: "admin@gmail.com",
       password: "admin123",
+      phone: "01123456789",
       verified: true,
       role: "admin",
     })
