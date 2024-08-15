@@ -1,0 +1,3 @@
+how get countries =>  /api/countries
+how get states from country =>  /api/states/:"isoCode for country"
+how get cities from state =>  /api/cities/:"isoCode for state"

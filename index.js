@@ -16,6 +16,7 @@ const { createAdmin } = require("./config/automaticAdminCreation");
 const authRoute = require("./routes/auth.route");
 const userRoute = require("./routes/user.route");
 const roleRoute = require("./routes/role.route");
+const { Country, State, City } = require('country-state-city');
 
 const app = express();
 
@@ -45,6 +46,15 @@ app.use(cookieparser());
 
 // Routes
 
+// start country and state and city routes
+const countryRoutes = require('./routes/countryRoutes');
+const stateRoutes = require('./routes/stateRoutes');
+const cityRoutes = require('./routes/cityRoutes');
+app.use('/api', countryRoutes);
+app.use('/api', stateRoutes);
+app.use('/api', cityRoutes);
+// end country and state and city routes
+
 app.use("/api/v1/auth", authRoute.router);
 app.use("/api/v1/users", userRoute.router);
 app.use("/api/v1/roles", roleRoute.router);
@@ -59,6 +69,8 @@ app.all("*", (req, res, next) => {
     )
   );
 });
+
+
 
 // Global Error Handling Middleware for express
 app.use(globalErrorHandler);
