@@ -4,7 +4,7 @@ const { phone } = require("phone");
 
 const validatorMiddleware = require("../../middlewares/validatorErrorHandling.middleware");
 const UserModel = require("../../models/user.model");
-const CountryModel = require("../../models/country.model");
+const CountryModel = require("../../models/Country");
 
 exports.signUpValidator = [
   check("country")

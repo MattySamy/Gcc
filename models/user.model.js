@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { phone } = require("phone");
 const bcrypt = require("bcrypt");
 
-const CountryModel = require("./country.model");
+const CountryModel = require("./Country");
 
 const userSchema = new mongoose.Schema(
   {

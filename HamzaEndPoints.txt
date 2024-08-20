@@ -1,3 +1,45 @@
-how get countries =>  /api/countries
-how get states from country =>  /api/states/:"isoCode for country"
-how get cities from state =>  /api/cities/:"isoCode for state"
+countries {
+    use /api/countries  to get all countries
+    use /api/countries/add  to create new country {
+        schema => 
+        name: 
+        isoCode:
+        phoneCode:
+    }
+    use /api/countries/update:id  to update country
+    use /api/countries/delete:id  to delete country
+}
+
+states {
+    use /api/states  to get all states
+    use /api/states/add  to create new state {
+        schema => 
+        name: 
+        isoCode: 
+        country: as id
+    }
+        use /api/states/update:id  to update state
+        use /api/states/delete:id  to delete state
+}
+
+cities {
+    use /api/cities  to get all cities
+    use /api/cities/add  to create new city {
+        schema => 
+        name: 
+        isoCode: 
+        state: as id
+    }
+        use /api/cities/update:id  to update city
+        use /api/cities/delete:id  to delete city
+}
+
+to create userAddress you have take this schema {
+    userId:  from token
+    country:
+    state:
+    city:
+    street:
+    postalCode:
+    phone:
+}

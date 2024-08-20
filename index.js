@@ -16,7 +16,6 @@ const { createAdmin } = require("./config/automaticAdminCreation");
 const authRoute = require("./routes/auth.route");
 const userRoute = require("./routes/user.route");
 const roleRoute = require("./routes/role.route");
-const { Country, State, City } = require('country-state-city');
 
 const app = express();
 
@@ -50,9 +49,11 @@ app.use(cookieparser());
 const countryRoutes = require('./routes/countryRoutes');
 const stateRoutes = require('./routes/stateRoutes');
 const cityRoutes = require('./routes/cityRoutes');
-app.use('/api', countryRoutes);
-app.use('/api', stateRoutes);
-app.use('/api', cityRoutes);
+const addressRoutes = require('./routes/addressRoutes');
+app.use('/api/countries', countryRoutes);
+app.use('/api/states', stateRoutes);
+app.use('/api/cities', cityRoutes);
+app.use('/api/addresses', addressRoutes);
 // end country and state and city routes
 
 app.use("/api/v1/auth", authRoute.router);
